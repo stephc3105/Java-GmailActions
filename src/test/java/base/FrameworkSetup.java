@@ -25,7 +25,7 @@ public class FrameworkSetup {
 
     protected static String baseUrl = "https://www.google.com/gmail/about/";
     protected String emailAddress = "sheldonc3.14159@gmail.com";
-    protected String password = "U*$db%CqSRnwUhH4";
+    protected String password = "";
 
     public static WebDriver driver;
     public Logger logger;
