@@ -25,10 +25,10 @@ public class gmailActions extends GmailLogin {
     String searchText = "test";
     String newFolderName = "My Stuff";
 
-    public ComposeEmailHelper composeEmailHelper;
-    public SearchEmailHelper searchEmailHelper;
-    public DeleteEmailHelper deleteEmailHelper;
-    public MoveEmailHelper moveEmailHelper;
+    public ComposeEmailHelper composeEmail;
+    public SearchEmailHelper searchEmail;
+    public DeleteEmailHelper deleteEmail;
+    public MoveEmailHelper moveEmail;
 
     GmailInboxMap gmailInboxMap;
 
@@ -37,10 +37,10 @@ public class gmailActions extends GmailLogin {
 
         logger = Logger.getLogger(log);
 
-        composeEmailHelper = new ComposeEmailHelper(driver);
-        searchEmailHelper = new SearchEmailHelper(driver);
-        deleteEmailHelper = new DeleteEmailHelper(driver);
-        moveEmailHelper = new MoveEmailHelper(driver);
+        composeEmail = new ComposeEmailHelper(driver);
+        searchEmail = new SearchEmailHelper(driver);
+        deleteEmail = new DeleteEmailHelper(driver);
+        moveEmail = new MoveEmailHelper(driver);
 
         gmailInboxMap = MapBuilder.getInstance(driver, GmailInboxMap.class);
 
@@ -52,13 +52,13 @@ public class gmailActions extends GmailLogin {
         logger.info("<Start Test>");
 
         logger.info("Compose an email");
-        composeEmailHelper.composeEmail(sendToEmail, emailSubject, emailMessage);
+        composeEmail.composeEmail(sendToEmail, emailSubject, emailMessage);
 
         logger.info("Search for text in email: " + searchText);
-        searchEmailHelper.searchEmailForText(searchText);
+        searchEmail.searchEmailForText(searchText);
 
         logger.info("Delete an email");
-        deleteEmailHelper.deleteEmail();
+        deleteEmail.deleteEmail();
 
         logger.info("Click the Inbox link");
         try {
@@ -70,7 +70,7 @@ public class gmailActions extends GmailLogin {
         }
 
         logger.info("Move email into a new folder named " + newFolderName);
-        moveEmailHelper.moveEmailToNewFolder(newFolderName);
+        moveEmail.moveEmailToNewFolder(newFolderName);
 
         logger.info("<End Test>");
 
